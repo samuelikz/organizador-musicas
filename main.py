@@ -6,9 +6,13 @@ from tkinter import filedialog, messagebox, ttk
 import threading
 import requests
 import time
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Configurar a API do Gemini
-api_key = 'KEY_API'  # Substitua pela sua chave de API real
+api_key = os.getenv('API_KEY')  # Carrega a chave da API do arquivo .env
 api_url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + api_key
 
 def organize_music_folder(src_folder_path, dst_folder_path, progress_var, root):
